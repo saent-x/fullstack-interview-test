@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+JP+N&display=swap');
+@import 'tailwindcss';
+
+.nav-header {
+    font-family: "WDXL Lubrifont JP N", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	background-color: #f9fafb;
+	color: #1f2937;
+	overflow-x: hidden;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px;
+	will-change: contents;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #e5e7eb;
+	position: sticky;
+	top: 0;
+	background: #f9fafb;
+	z-index: 10;
+	height: 80px;
+	min-height: 80px;
+	max-height: 80px;
+	overflow: hidden;
+}
+
+.header h1 {
+	margin: 0;
+	color: #1f2937;
+	font-size: 2rem;
+	font-weight: 700;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.nav {
+	display: flex;
+	gap: 20px;
+	flex-shrink: 0;
+}
+
+.nav-link {
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #6b7280;
+	transition: all 0.2s ease;
+	font-weight: 300;
+	will-change: background-color, color;
+	white-space: nowrap;
+}
+
+.nav-link:hover {
+	background-color: #f3f4f6;
+	color: #374151;
+}
+
+.nav-link.active {
+	background-color: black;
+	color: white;
+}
+
+.main {
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.page-content {
+	opacity: 1;
+	transition: opacity 0.15s ease-in-out;
+	height: 100%;
+}
+
+.page-content.loading {
+	opacity: 0.7;
+}
+
+.menu-container,
+.menu-display,
+.loading,
+.error,
+.empty-state {
+	min-height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow-x: auto;
+}
+
+.loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 20px;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid #e5e7eb;
+	border-top: 4px solid #3b82f6;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin-bottom: 20px;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.error {
+	text-align: center;
+	padding: 40px 20px;
+	color: #dc2626;
+}
+
+.empty-state {
+	text-align: center;
+	padding: 60px 20px;
+	color: #6b7280;
+}
+
+.btn {
+	border: none;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.btn-small {
+	padding: 3px 5px;
+	font-size: 12px;
+}
+
+.btn-primary {
+	background-color: black;
+	color: white;
+}
+
+.btn-primary:hover {
+	background-color: rgb(90, 86, 86);
+}
+
+.btn-secondary {
+	background-color: #6b7280;
+	color: white;
+}
+
+.btn-secondary:hover {
+	background-color: #4b5563;
+}
+
+.btn-success {
+	background-color: #10b981;
+	color: white;
+}
+
+.btn-success:hover {
+	background-color: #059669;
+}
+
+.btn-warning {
+	background-color: #f59e0b;
+	color: white;
+}
+
+.btn-warning:hover {
+	background-color: #d97706;
+}
+
+.btn-danger {
+	background-color: #ef4444;
+	color: white;
+}
+
+.btn-danger:hover {
+	background-color: #dc2626;
+}
+
+.menu-container {
+	background: white;
+	border-radius: 12px;
+	padding: 30px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container h2 {
+	margin: 0 0 10px 0;
+	color: #1f2937;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.instructions {
+	margin: 0 0 30px 0;
+	color: #6b7280;
+	font-size: 14px;
+}
+
+.menu-tree {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.menu-item {
+	display: flex;
+	align-items: center;
+	border-radius: 100px;
+	gap: 12px;
+	padding: 1px 15px;
+	background-color: #f9fafb;
+	border: 1px solid #e5e7eb;
+	transition: all 0.2s;
+	margin-bottom: 8px;
+	cursor: grab;
+}
+
+.menu-item:hover {
+	background-color: #f3f4f6;
+	border-color: #d1d5db;
+	cursor: pointer;
+}
+
+.menu-item:active {
+	cursor: grabbing;
+}
+
+.menu-item.drag-over {
+	background-color: #dbeafe;
+	border-color: #3b82f6;
+	border-width: 2px;
+	transform: scale(1.02);
+}
+
+.menu-item.can-drop {
+	background-color: #f0f9ff;
+	border-color: #0ea5e9;
+}
+
+.menu-item[draggable="false"] {
+	cursor: default;
+}
+
+.icon {
+	font-size: 18px;
+	width: 24px;
+	text-align: center;
+}
+
+.title {
+	font-size: 16px;
+	color: #374151;
+	font-weight: 500;
+	flex: 1;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.menu-item:hover .actions {
+	opacity: 1;
+}
+
+.edit-input {
+	flex: 1;
+	padding: 8px 12px;
+	border: 2px solid #3b82f6;
+	border-radius: 6px;
+	font-size: 16px;
+	outline: none;
+}
+
+.edit-input:focus {
+	border-color: #2563eb;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.modal {
+	background: white;
+	border-radius: 12px;
+	padding: 30px;
+	max-width: 500px;
+	width: 90%;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal h3 {
+	margin: 0 0 20px 0;
+	color: #1f2937;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.modal p {
+	margin: 0 0 20px 0;
+	color: #6b7280;
+}
+
+.select-input {
+	width: 100%;
+	padding: 12px;
+	border: 2px solid #e5e7eb;
+	border-radius: 8px;
+	font-size: 16px;
+	margin-bottom: 20px;
+	outline: none;
+}
+
+.select-input:focus {
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.modal-actions {
+	display: flex;
+	gap: 12px;
+	justify-content: flex-end;
+}
+
+.menu-display {
+	background: white;
+	border-radius: 12px;
+	padding: 30px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.menu-display h2 {
+	margin: 0 0 20px 0;
+	color: #1f2937;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.menu-item-display {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 0;
+	margin-left: 20px;
+}
+
+.menu-item-display:first-child {
+	margin-left: 0;
+}
+
+.menu-item-display .icon {
+	font-size: 16px;
+	width: 20px;
+	text-align: center;
+}
+
+.menu-item-display .title {
+	font-size: 16px;
+	color: #374151;
+	font-weight: 500;
+}
+
+.menu-item-display .submenu {
+	margin-left: 20px;
+	margin-top: 8px;
+}

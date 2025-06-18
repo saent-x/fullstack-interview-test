@@ -144,40 +144,7 @@ src/
 # Build and run production container
 docker-compose up --build
 
-# Access at http://localhost:3000
+# Access at http://0.0.0.0:3000
 ```
-
-### Development Environment
-```bash
-# Run development environment with hot reload
-docker-compose --profile dev up --build
-
-# Access at http://localhost:5173
-```
-
-### Docker Commands
-```bash
-# Build only
-docker-compose build
-
-# Run in background
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop containers
-docker-compose down
-
-# Clean up volumes (removes database)
-docker-compose down -v
-```
-
-### Docker Features
-- **Multi-stage builds** for optimized production images
-- **Development mode** with hot reload and volume mounts
-- **Health checks** for production reliability
-- **Persistent database** storage via Docker volumes
-- **Security** with non-root user execution
 
 ---
