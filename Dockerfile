@@ -16,16 +16,17 @@ ENV NODE_ENV=${NODE_ENV}
 RUN bun run build
 RUN bun run db:push --force
 
-FROM oven/bun:1 AS runner
+FROM oven/bun:1-slim AS runner
 WORKDIR /app
 
-
 ARG DATABASE_URL
+ARG PORT
 ENV DATABASE_URL=${DATABASE_URL}
+ENV PORT=${PORT}
 
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/data.db ./data.db
 
-EXPOSE 3000
+EXPOSE ${PORT}
 
 CMD ["sh", "-c", "bun run ./build/index.js"]

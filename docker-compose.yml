@@ -8,13 +8,8 @@ services:
       args:
         DATABASE_URL: "file:./data.db"
         NODE_ENV: production
-        PORT: 3000
+        PORT: 5056
         HOSTNAME: 0.0.0.0
     ports:
-      - "3000:3000"
+      - "5056:5056"
     restart: unless-stopped
-    # environment:
-    #   - DATABASE_URL=file:./data.db
-    #   - NODE_ENV=production
-    #   - PORT=3000
-    #   - HOSTNAME=0.0.0.0
